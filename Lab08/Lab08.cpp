@@ -169,9 +169,9 @@ int main()
 				iofile >> age;
 				if (name[0] != '~') {
 					cout << "Record " << count << " " << name << " " << age << endl;
+					count++;
 				}
 
-				count++;
 				ws(iofile);
 				getline(iofile, name, ',');
 			}
@@ -182,10 +182,10 @@ int main()
 		case 4: // sort
 			cout << "\nSorting Database: " << endl;
 
-			for (int step = 0; step < numRecords; step++) {
+			for (int step = 0; step < numRecords + delRecords; step++) {
 				iofile.open(filename, ios::in | ios::out);
 				iofile.seekg(0, ios::beg);
-				for (int i = 0; i < (numRecords-1) - step; i++) {
+				for (int i = 0; i < (numRecords + delRecords -1) - step; i++) {
 
 					//compare two adjacent elements 
 					iofile.seekp((i)* RECORD_LEN, ios::beg);
